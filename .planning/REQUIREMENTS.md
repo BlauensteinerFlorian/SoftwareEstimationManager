@@ -189,7 +189,7 @@ Explizit ausgeschlossen. Dokumentiert, um Scope-Creep zu verhindern.
 | Real-time Collaboration / WebSockets | Single-User-Tool; keine Notwendigkeit |
 | Monte-Carlo-Simulation | PERT analytisch + P50/P80/P90 ist mathematisch äquivalent auf dieser Granularität; Monte Carlo = "false sophistication" |
 | AI-/LLM-Vorschläge für Parameter | Verletzt Lokal-first (kein externer Service) und Reproduzierbarkeit (Modell-Drift) |
-| Jira / ADO / Excel Re-Import von Schätzungen | Kills Audit-Trail; jede Schätzung muss eindeutig im Tool entstanden sein |
+| Jira / ADO / Excel Re-Import von Schätzungen | Kills Audit-Trail; jede Schätzung muss eindeutig im Tool entstehen |
 | COCOMO II / Function Points / UCP als Parallel-Methoden | Methoden-Cross-Validation = "false sophistication" auf v1-Granularität; Hausmethodik PERT genügt |
 | Wideband Delphi / Story Points | Andere Methodik-Familie; nicht im Hausmethodik-Korridor |
 | Share-via-Link / öffentliche Schätzungs-URLs | Sicherheitsrisiko bei späterer Multi-User-Erweiterung; PDF-Versand bleibt der Kanal |
@@ -201,28 +201,121 @@ Explizit ausgeschlossen. Dokumentiert, um Scope-Creep zu verhindern.
 
 ## Traceability
 
-Welche Phasen welche Requirements abdecken — wird durch Roadmapper befüllt.
+Welche Phasen welche Requirements abdecken — befüllt durch Roadmapper am 2026-05-16.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| INPUT-01 bis INPUT-08 | TBD | Pending |
-| PARAM-01 bis PARAM-08 | TBD | Pending |
-| FACT-01 bis FACT-04 | TBD | Pending |
-| TEXT-01, TEXT-02 | TBD | Pending |
-| CALC-01 bis CALC-07 | TBD | Pending |
-| REPRO-01 bis REPRO-03 | TBD | Pending |
-| DASH-01 bis DASH-10 | TBD | Pending |
-| PDF-01 bis PDF-13 | TBD | Pending |
-| PERS-01 bis PERS-10 | TBD | Pending |
-| ADMIN-01 bis ADMIN-12 | TBD | Pending |
-| INFRA-01 bis INFRA-10 | TBD | Pending |
-| TECH-01 bis TECH-10 | TBD | Pending |
+| INPUT-01 | Phase 2 | Pending |
+| INPUT-02 | Phase 2 | Pending |
+| INPUT-03 | Phase 2 | Pending |
+| INPUT-04 | Phase 2 | Pending |
+| INPUT-05 | Phase 2 | Pending |
+| INPUT-06 | Phase 2 | Pending |
+| INPUT-07 | Phase 2 | Pending |
+| INPUT-08 | Phase 2 | Pending |
+| PARAM-01 | Phase 2 | Pending |
+| PARAM-02 | Phase 2 | Pending |
+| PARAM-03 | Phase 2 | Pending |
+| PARAM-04 | Phase 2 | Pending |
+| PARAM-05 | Phase 2 | Pending |
+| PARAM-06 | Phase 2 | Pending |
+| PARAM-07 | Phase 2 | Pending |
+| PARAM-08 | Phase 2 | Pending |
+| FACT-01 | Phase 2 | Pending |
+| FACT-02 | Phase 2 | Pending |
+| FACT-03 | Phase 2 | Pending |
+| FACT-04 | Phase 2 | Pending |
+| TEXT-01 | Phase 2 | Pending |
+| TEXT-02 | Phase 2 | Pending |
+| CALC-01 | Phase 2 | Pending |
+| CALC-02 | Phase 2 | Pending |
+| CALC-03 | Phase 2 | Pending |
+| CALC-04 | Phase 2 | Pending |
+| CALC-05 | Phase 2 | Pending |
+| CALC-06 | Phase 2 | Pending |
+| CALC-07 | Phase 2 | Pending |
+| REPRO-01 | Phase 2 | Pending |
+| REPRO-02 | Phase 3 | Pending |
+| REPRO-03 | Phase 3 | Pending |
+| DASH-01 | Phase 2 | Pending |
+| DASH-02 | Phase 2 | Pending |
+| DASH-03 | Phase 2 | Pending |
+| DASH-04 | Phase 2 | Pending |
+| DASH-05 | Phase 2 | Pending |
+| DASH-06 | Phase 2 | Pending |
+| DASH-07 | Phase 2 | Pending |
+| DASH-08 | Phase 2 | Pending |
+| DASH-09 | Phase 2 | Pending |
+| DASH-10 | Phase 2 | Pending |
+| PDF-01 | Phase 4 | Pending |
+| PDF-02 | Phase 4 | Pending |
+| PDF-03 | Phase 4 | Pending |
+| PDF-04 | Phase 4 | Pending |
+| PDF-05 | Phase 4 | Pending |
+| PDF-06 | Phase 4 | Pending |
+| PDF-07 | Phase 4 | Pending |
+| PDF-08 | Phase 4 | Pending |
+| PDF-09 | Phase 4 | Pending |
+| PDF-10 | Phase 4 | Pending |
+| PDF-11 | Phase 4 | Pending |
+| PDF-12 | Phase 4 | Pending |
+| PDF-13 | Phase 4 | Pending |
+| PERS-01 | Phase 3 | Pending |
+| PERS-02 | Phase 3 | Pending |
+| PERS-03 | Phase 3 | Pending |
+| PERS-04 | Phase 3 | Pending |
+| PERS-05 | Phase 3 | Pending |
+| PERS-06 | Phase 3 | Pending |
+| PERS-07 | Phase 3 | Pending |
+| PERS-08 | Phase 3 | Pending |
+| PERS-09 | Phase 3 | Pending |
+| PERS-10 | Phase 3 | Pending |
+| ADMIN-01 | Phase 5 | Pending |
+| ADMIN-02 | Phase 5 | Pending |
+| ADMIN-03 | Phase 5 | Pending |
+| ADMIN-04 | Phase 5 | Pending |
+| ADMIN-05 | Phase 5 | Pending |
+| ADMIN-06 | Phase 5 | Pending |
+| ADMIN-07 | Phase 5 | Pending |
+| ADMIN-08 | Phase 5 | Pending |
+| ADMIN-09 | Phase 5 | Pending |
+| ADMIN-10 | Phase 5 | Pending |
+| ADMIN-11 | Phase 5 | Pending |
+| ADMIN-12 | Phase 5 | Pending |
+| INFRA-01 | Phase 1 | Pending |
+| INFRA-02 | Phase 4 | Pending |
+| INFRA-03 | Phase 1 | Pending |
+| INFRA-04 | Phase 1 | Pending |
+| INFRA-05 | Phase 1 | Pending |
+| INFRA-06 | Phase 1 | Pending |
+| INFRA-07 | Phase 1 | Pending |
+| INFRA-08 | Phase 4 | Pending |
+| INFRA-09 | Phase 3 | Pending |
+| INFRA-10 | Phase 4 | Pending |
+| TECH-01 | Phase 2 | Pending |
+| TECH-02 | Phase 2 | Pending |
+| TECH-03 | Phase 3 | Pending |
+| TECH-04 | Phase 2 | Pending |
+| TECH-05 | Phase 3 | Pending |
+| TECH-06 | Phase 5 | Pending |
+| TECH-07 | Phase 4 | Pending |
+| TECH-08 | Phase 2 | Pending |
+| TECH-09 | Phase 2 | Pending |
+| TECH-10 | Phase 3 | Pending |
 
 **Coverage:**
-- v1 requirements: 95 total (8 INPUT + 8 PARAM + 4 FACT + 2 TEXT + 7 CALC + 3 REPRO + 10 DASH + 13 PDF + 10 PERS + 12 ADMIN + 10 INFRA + 10 TECH)
-- Mapped to phases: 0 (befüllt durch Roadmapper)
-- Unmapped: 95 ⚠️ (wird durch Roadmap-Erstellung gelöst)
+- v1 requirements: 97 total (8 INPUT + 8 PARAM + 4 FACT + 2 TEXT + 7 CALC + 3 REPRO + 10 DASH + 13 PDF + 10 PERS + 12 ADMIN + 10 INFRA + 10 TECH)
+- Mapped to phases: 97 ✓
+- Unmapped: 0 ✓
+
+**Per-phase counts:**
+- Phase 1 (Skeleton Slice): 6 requirements
+- Phase 2 (Engine & Form): 45 requirements
+- Phase 3 (Persistence & History): 16 requirements
+- Phase 4 (PDF Export): 17 requirements
+- Phase 5 (Admin Configuration): 13 requirements
+- Total: 97 ✓
 
 ---
 *Requirements defined: 2026-05-16*
-*Last updated: 2026-05-16 after initial definition*
+*Last updated: 2026-05-16 after roadmap creation — Traceability table populated, header count corrected from 95 to 97 (8+8+4+2+7+3+10+13+10+12+10+10)*
