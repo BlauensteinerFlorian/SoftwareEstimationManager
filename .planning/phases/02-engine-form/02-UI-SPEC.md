@@ -69,16 +69,16 @@ Tailwind v4 default `--spacing` scale (4-pt rhythm) is used unchanged. Declared 
 
 ## Typography
 
-Three sizes + one display size, two weights. Tailwind v4 utility classes only — no custom font-size config.
+Four sizes, two weights. Tailwind v4 utility classes only — no custom font-size config.
 
 | Role | Size | Tailwind | Weight | Line Height | Usage |
 |------|------|----------|--------|-------------|-------|
 | Body | 16px | `text-base` | 400 (`font-normal`) | 1.5 (`leading-normal`) | Form input text, paragraph copy, scope text body |
-| Label | 14px | `text-sm` | 500 (`font-medium`) | 1.4 (`leading-tight`) | All form labels, table headers, faktoren list entries |
+| Label | 14px | `text-sm` | 600 (`font-semibold`) | 1.4 (`leading-tight`) | All form labels, table headers, faktoren list entries, char counters, validation messages, tooltip body |
 | Heading | 20px | `text-xl` | 600 (`font-semibold`) | 1.3 (`leading-snug`) | Card titles ("Stammdaten", "Parameter", "PERT-Detail" etc.) |
 | Display | 32px | `text-3xl` | 600 (`font-semibold`) | 1.2 (`leading-tight`) | Dashboard Kennzahlen-Card numbers ("102,3 PT" / "15.480,75 €") |
 
-**Caption / helper text:** `text-xs` (12px), `font-normal`, `text-slate-500` — used only for live char-counters (`523 / 600`), validation messages, and tooltip body text.
+**De-emphasized 14px text:** char counters (`523 / 600`), validation messages, and tooltip body all render at `text-sm` with `text-slate-500 font-normal` for visual de-emphasis. The lighter color + lighter weight differentiates them from the 14px Label without introducing additional font sizes or weights into the contract.
 
 **Locale-formatted numbers** always render in `tabular-nums` Tailwind class (`font-variant-numeric: tabular-nums`) so columns of PT/€ values align vertically in the Phasen-Tabelle.
 
@@ -109,7 +109,7 @@ Built on shadcn `slate` baseColor (CSS variables, light mode). 60/30/10 split:
 **Contrast verification (WCAG AA, all ≥ 4.5:1 for normal text, ≥ 3:1 for large text and UI components):**
 - Body text `slate-900` on `white`: 16.1:1 ✓
 - Label text `slate-700` on `white`: 11.2:1 ✓
-- Caption `slate-500` on `white`: 4.85:1 ✓ (above AA-normal)
+- De-emphasized 14px `slate-500` on `white`: 4.85:1 ✓ (above AA-normal)
 - Primary button white text on `slate-900`: 16.1:1 ✓
 - Warning text `amber-800` on `amber-50` banner bg: 7.4:1 ✓
 - Destructive `red-600` on `white`: 5.9:1 ✓
@@ -208,7 +208,7 @@ Examples:
 
 ### Char counter format (INPUT-02 + TEXT-01/02 + specifics)
 
-Format: `{current} / {max}` right-aligned beneath the textarea.
+Format: `{current} / {max}` right-aligned beneath the textarea, rendered at `text-sm` with the de-emphasis color rules below.
 
 Color rules:
 - `current < max × 0.95` → `text-slate-500`
@@ -269,18 +269,20 @@ Backend serializes Decimal as **already-quantized string** (D-08); frontend MUST
 - Two-column responsive grid (`grid grid-cols-1 md:grid-cols-2 gap-4`)
 - Field order (top-to-bottom, left-to-right): Projektname (full width), Projekttyp (left) + Kundenname (right), Projekt-ID (left) + Gültigkeit-bis (right), Erstellt-von (left) + Tagessatz (right), Projektskizze (full width with counter)
 - Mobile (<768px): single column, same vertical order
+- Form-field labels render with `text-sm font-semibold` per the Typography contract
 
 **Card 2 — Parameter field grid:**
-- Each of the 5 row-parameters (Pages, Use Cases, Business Objects, Interfaces, Batches) renders as: Label (full row) → side-by-side `<Input type="number" min="0">` (anzahl, ~40% width) + `<Select>` (Komplexität, ~60% width) → tiny "ℹ" tooltip-trigger icon next to the Komplexität label
+- Each of the 5 row-parameters (Pages, Use Cases, Business Objects, Interfaces, Batches) renders as: Label (full row, `text-sm font-semibold`) → side-by-side `<Input type="number" min="0">` (anzahl, ~40% width) + `<Select>` (Komplexität, ~60% width) → tiny "ℹ" tooltip-trigger icon next to the Komplexität label
 - Below the 5 rows: 3 single-column fields (Languages number-input 1–10, Roles number-input 1–30, Concurrent Users select 5 stages)
 
 **Card 3 — Korrekturfaktoren grid:**
 - 2×2 grid on desktop (`grid grid-cols-1 md:grid-cols-2 gap-4`), single column on mobile
 - All 4 Selects: NO `defaultValue`, NO selected placeholder option; placeholder text `— Bitte wählen —`. `aria-required="true"`.
+- Form-field labels render with `text-sm font-semibold`
 
 **Card 4 — Annahmen & Ausschlüsse:**
-- Two stacked `<Textarea rows={5}>` blocks, each with char counter beneath
-- Labels: `Annahmen` and `Ausschlüsse`. Helper text: `Optional. Fließt in den Scope-Text und PDF-Export ein.`
+- Two stacked `<Textarea rows={5}>` blocks, each with char counter beneath (counter uses `text-sm text-slate-500 font-normal`)
+- Labels: `Annahmen` and `Ausschlüsse` (rendered at `text-sm font-semibold`). Helper text: `Optional. Fließt in den Scope-Text und PDF-Export ein.` (rendered at `text-sm text-slate-500 font-normal`)
 
 **Sticky footer behavior:**
 - Always pinned to viewport bottom (`position: fixed`)
@@ -318,7 +320,7 @@ Backend serializes Decimal as **already-quantized string** (D-08); frontend MUST
 
 **Card 1 — Kennzahlen (the headline grid):**
 - `<div class="grid grid-cols-2 md:grid-cols-4 gap-4">`
-- Each cell: small label on top (`text-sm text-slate-500`), large Display number below (`text-3xl font-semibold tabular-nums`)
+- Each cell: small label on top (`text-sm text-slate-500 font-normal`), large Display number below (`text-3xl font-semibold tabular-nums`)
 - Cell order: `PERT` / `P50` / `P80` / `P90` — all in `{value} PT` form
 - `P50` / `P80` / `P90` labels render with a trailing `?` tooltip-trigger icon (`text-slate-400 cursor-help`) showing the locked tooltip body
 
@@ -330,12 +332,13 @@ Backend serializes Decimal as **already-quantized string** (D-08); frontend MUST
 **Card 3 — Phasenverteilung table:**
 - shadcn `Table` primitive (added in same install) OR plain `<table>` styled with `border-collapse`, `border-b border-slate-200` on each `<tr>`
 - Columns: `Phase` (left, `text-left`) | `Anteil` (right, `text-right tabular-nums`) | `PT` (right, `text-right tabular-nums`) | `€` (right, `text-right tabular-nums`)
+- Table headers render with `text-sm font-semibold` (Label role)
 - 6 rows: Anforderungen / Architektur / Implementierung / Test / Deployment / PM — labels exactly as in CALC-05
 - Optional total row `Gesamt` at bottom with `font-semibold` and `border-t-2 border-slate-300`
 
 **Card 4 — Faktoren list:**
-- Vertical list (`space-y-2`), each row in the locked format above
-- Any row where multiplier > 1.15 renders the multiplier badge in `--warning` palette (amber-50 bg, amber-800 text, `text-xs px-2 py-0.5 rounded`)
+- Vertical list (`space-y-2`), each row in the locked format above (rendered at `text-sm font-semibold`)
+- Any row where multiplier > 1.15 renders the multiplier badge in `--warning` palette (amber-50 bg, amber-800 text, `text-sm px-2 py-0.5 rounded`)
 
 **Card 5 — Scope-Beschreibung:**
 - Backend returns `scope_text` as a plain string (Jinja2-generated, D-Discretion)
@@ -358,7 +361,7 @@ Backend serializes Decimal as **already-quantized string** (D-08); frontend MUST
 | Focus | Inputs | `ring-2 ring-primary ring-offset-2 outline-none` (Tailwind v4 default focus-visible) |
 | Disabled | Sticky `Berechnen` button (form invalid) | `opacity-50 cursor-not-allowed` (shadcn `Button` disabled default) |
 | Disabled | Sticky `Berechnen` button (submission in flight) | Same disabled + replace label with `Wird berechnet …` + spinner `<Loader2 className="animate-spin" />` |
-| Error | Form field after blur with validation error | `border-destructive` (red-600), helper text below `text-destructive text-xs` |
+| Error | Form field after blur with validation error | `border-destructive` (red-600), helper text below `text-destructive text-sm font-normal` |
 | Required | Label of Pflichtfeld | Trailing `*` in `text-destructive` AND `aria-required="true"` on the input |
 | Loading | Form submit in flight | Submit button disabled; main content remains interactive but second submit is blocked |
 | Empty `/result` state (no `location.state`) | Whole page | Render the empty-state block from Copywriting Contract |
