@@ -5,7 +5,7 @@ WORKDIR /app
 
 # Layer-Caching: erst Manifest + Lock, dann Source
 COPY package.json pnpm-lock.yaml ./
-RUN corepack enable && pnpm install --frozen-lockfile
+RUN npm install -g pnpm@9.15.0 --quiet && pnpm install --frozen-lockfile
 
 COPY tsconfig.json tsconfig.app.json tsconfig.node.json vite.config.ts index.html ./
 COPY src ./src
