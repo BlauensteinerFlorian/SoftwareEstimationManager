@@ -30,8 +30,8 @@ Decimal phases appear between their surrounding integers in numeric order.
   2. Nutzer öffnet http://localhost:3000 im Browser, sendet via Eingabe-Form einen POST an `/api/estimates` (nginx reverse-proxied zu `backend:8000`), und sieht eine vom Backend berechnete Zahl gerendert — Same-Origin, kein CORS-Setup
   3. `./data` und `./config` sind als Bind-Mounts persistent über Container-Neustarts; `DATABASE_URL` wird aus Env gelesen mit SQLite-Default
   4. `/api/health` antwortet 200; docker-compose `depends_on` mit `condition: service_healthy` blockiert Frontend-Startup bis Backend bereit ist
-**Plans:** 3 plans
-- [ ] 01-01-PLAN.md — Cleanup repo root + scaffold backend/ (FastAPI app + Dockerfile + uv.lock)
+**Plans:** 1/3 plans executed
+- [x] 01-01-PLAN.md — Cleanup repo root + scaffold backend/ (FastAPI app + Dockerfile + uv.lock)
 - [ ] 01-02-PLAN.md — Scaffold frontend/ (Vite 7 + React 19 + Tailwind 4 + nginx + pnpm-lock.yaml)
 - [ ] 01-03-PLAN.md — docker-compose.yml + root infra + smoke matrix + browser checkpoint
 
@@ -98,7 +98,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Skeleton Slice | 0/3 | Planned | - |
+| 1. Skeleton Slice | 1/3 | In Progress|  |
 | 2. Engine & Form | 0/TBD | Not started | - |
 | 3. Persistence & History | 0/TBD | Not started | - |
 | 4. PDF Export | 0/TBD | Not started | - |

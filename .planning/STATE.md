@@ -2,10 +2,10 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: ready_to_execute
-stopped_at: Phase 1 planned — 3 plans + Nyquist validation approved, ready to execute
-last_updated: "2026-05-17T00:00:00.000Z"
-last_activity: 2026-05-17 — Phase 1 planning complete (3 plans, Nyquist-validated)
+status: executing
+stopped_at: Phase 1 planned — ready for `/gsd-execute-phase 01`
+last_updated: "2026-05-17T05:52:37.382Z"
+last_activity: 2026-05-17 -- Phase 01 execution started
 progress:
   total_phases: 5
   completed_phases: 0
@@ -21,14 +21,14 @@ progress:
 See: .planning/PROJECT.md (updated 2026-05-16)
 
 **Core value:** Reproduzierbare, nachvollziehbare PT-Schätzungen mit Snapshot der verwendeten Gewichte je Schätzung — gespeicherte Schätzungen bleiben unverändert reproduzierbar, auch nach Admin-Änderung der globalen Gewichte.
-**Current focus:** Phase 1 — Skeleton Slice
+**Current focus:** Phase 01 — skeleton-slice
 
 ## Current Position
 
-Phase: 1 of 5 (Skeleton Slice)
-Plan: 0 of 3 in current phase
-Status: Ready to execute
-Last activity: 2026-05-17 — Phase 1 planning complete (3 plans, Nyquist-validated, approval set)
+Phase: 01 (skeleton-slice) — EXECUTING
+Plan: 1 of 3
+Status: Executing Phase 01
+Last activity: 2026-05-17 -- Phase 01 execution started
 
 Progress: [░░░░░░░░░░] 0%
 
