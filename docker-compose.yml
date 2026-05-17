@@ -1,0 +1,29 @@
+# Source: research/ARCHITECTURE.md §"Service Topology" + research/STACK.md §"Decision 7"
+# Compose-v2 — kein `version:`-Key
+services:
+  backend:
+    build: ./backend
+    expose:
+      - "8000"               # INFRA-04: NICHT `ports:` — Backend ist nur compose-intern
+    environment:
+      DATABASE_URL: sqlite:///./data/estimates.db    # INFRA-05: env-driven, Phase 1 nur geloggt
+    volumes:
+      - ./data:/app/data     # INFRA-06: persistenter Bind-Mount für künftige DB
+      - ./config:/app/config # INFRA-06: persistenter Bind-Mount für künftiges weights.json
+    healthcheck:
+      # D-06: kein curl im Image — urllib reicht
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/api/health')"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+      start_period: 5s
+    restart: unless-stopped
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:80"            # INFRA-04: EINZIGER Host-Port
+    depends_on:
+      backend:
+        condition: service_healthy   # INFRA-07: gated auf Backend-Bereitschaft (Pitfall #15)
+    restart: unless-stopped
